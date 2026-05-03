@@ -1,0 +1,40 @@
+# Standalone StemLabs Pages repo — place this workflow at `.github/workflows/`
+# when `page/stemlabs/` from crash-flow is the repository root (separate gh repo).
+#
+# Site URL: https://<owner>.github.io/<repo>/
+#
+# One-time: GitHub repo → Settings → Pages → Source: GitHub Actions.
+
+name: GitHub Pages (StemLabs)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages-stemlabs
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
