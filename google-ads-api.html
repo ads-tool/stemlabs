@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StemLabs use of Google Ads API — internal analytics for our own advertiser accounts only; permitted use summary for compliance review." />
+    <title>Google Ads API integration — StemLabs</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230a1628' width='32' height='32'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='%2338bdf8'>S</text></svg>" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="./index.html" class="logo" aria-label="StemLabs home">
+          <span class="logo-mark">◈</span>
+          <span class="logo-text">StemLabs</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="./index.html">Home</a>
+          <a href="./privacy-policy.html">Privacy Policy</a>
+          <a href="./google-ads-api.html" aria-current="page">Google Ads API</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="policy-document">
+      <div class="wrap">
+        <article class="policy-prose disclosure-page" aria-label="Google Ads API disclosure">
+          <p class="eyebrow disclosure-eyebrow">Developer disclosure · compliance</p>
+          <h1>StemLabs use of Google Ads API</h1>
+          <p class="muted policy-lede disclosure-lede">
+            This page summarizes how <strong>StemLabs</strong> (mobile app publisher) uses the
+            <strong>Google Ads API</strong> in connection with our own advertising accounts. We do
+            not resell API access as a standalone commercial service to unrelated third parties.
+          </p>
+
+          <h2>Organizational identity</h2>
+          <p>
+            <strong>StemLabs</strong> is the publishing and integrations brand used in product,
+            dashboards, developer registrations, and partner-facing identity.
+            Supporting legal and organisational context is provided by <strong>Binary Bridge Labs</strong>.
+            We do not abbreviate Binary Bridge Labs as “BBL”.
+          </p>
+
+          <h2>Product context</h2>
+          <p>
+            StemLabs builds and distributes consumer apps monetized primarily through
+            <strong>in-app advertising (IAA)</strong>. We buy user acquisition, including campaigns
+            on Google Ads surfaces relevant to mobile growth (such as App campaigns and Performance
+            Max with app-focused goals).
+          </p>
+          <p>
+            Our internal web application, operational at
+            <a href="https://dashboard.stemlabs.site/">https://dashboard.stemlabs.site/</a>,
+            aggregates marketing cost with publisher revenue indicators to analyse
+            <strong>cost, revenue, profit, and ROAS</strong> for our portfolios. OAuth and
+            credential handling are confined to integrations we authorize.
+          </p>
+
+          <h2>Permitted use (summary)</h2>
+          <ul>
+            <li>
+              <strong>Reporting:</strong> server-side ingestion via Google Ads API read paths
+              (e.g., <code>searchStream</code> / GAQL-style reporting) into our Postgres-backed
+              analytics store.
+            </li>
+            <li>
+              <strong>Campaign optimisation (planned, governed):</strong> limited mutate operations
+              for our own campaigns—budget updates and status changes—with approval workflows,
+              audit logging, and validation where applicable. Broader edits only under the same
+              governance model.
+            </li>
+            <li>
+              <strong>Campaign creation (planned):</strong> narrow create flows for
+              <strong>App campaigns</strong> and <strong>Performance Max</strong> aligned with our UA
+              playbooks, bounded volume, and audit trails—not unrestricted multi-channel campaign
+              builders for unrelated advertisers.
+            </li>
+          </ul>
+
+          <h2>Publishing & privacy</h2>
+          <p>
+            Public privacy notice for stemlabs.site:
+            <a href="./privacy-policy.html">StemLabs Privacy Policy</a>.
+            Dashboard-hosted policy (sign-in walled app surface):
+            <a href="https://dashboard.stemlabs.site/privacy">https://dashboard.stemlabs.site/privacy</a>.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            API / compliance enquiries:
+            <a href="mailto:contact@stemlabs.site">contact@stemlabs.site</a>.
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>© <span id="year"></span> StemLabs · Binary Bridge Labs · All rights reserved.</span>
+        <div class="footer-links">
+          <a href="./google-ads-api.html">Google Ads API</a>
+          <a href="./privacy-policy.html">Privacy</a>
+          <a href="./index.html">Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
