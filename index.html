@@ -30,31 +30,6 @@
     </header>
 
     <main id="main">
-      <!-- Explicit API-application context — reviewers expect this on stemlabs.site (public company URL in API Center) -->
-      <div
-        class="wrap disclosure-banner reviewer-site-banner"
-        id="google-ads-api-review"
-        aria-labelledby="reviewer-banner-title">
-        <p class="banner-label" id="reviewer-banner-title">Google Ads API — company website context</p>
-        <p>
-          <strong>StemLabs</strong> (<strong>stemlabs.site</strong>) is our public-facing company presence for policies and
-          compliance. StemLabs publishes consumer mobile apps; we monetise largely through <strong>in-app advertising</strong>
-          and run <strong>user acquisition</strong> including <strong>Google Ads</strong>.
-        </p>
-        <p>
-          Our <strong>StemLabs Dashboard</strong> (<a href="https://dashboard.stemlabs.site/">https://dashboard.stemlabs.site/</a>,
-          HTTPS) is <strong>internal-only</strong> software that uses Google’s documented <strong>Google Ads API</strong> flows
-          to ingest account performance data for portfolios <strong>we operate ourselves</strong>, combined with monetisation KPIs —
-          so operators see cost, revenue, and ROAS in one place.
-          We <strong>do not sell</strong> Google Ads API access as a standalone product to unrelated advertisers.
-        </p>
-        <p class="muted-small reviewer-banner-links">
-          <a href="./google-ads-api.html">Full technical disclosure — scope, permissible use, OAuth, architecture &amp; privacy</a>
-          · <a href="./privacy-policy.html">Privacy policy (stemlabs.site)</a>
-          · <a href="https://dashboard.stemlabs.site/privacy">Privacy (authenticated dashboard)</a>
-        </p>
-      </div>
-
       <section class="hero-pro wrap" aria-labelledby="hero-heading">
         <div class="hero-grid">
           <div class="hero-copy">
@@ -66,7 +41,6 @@
             <div class="hero-actions">
               <a class="btn btn-primary" href="mailto:contact@stemlab.site">Talk to StemLabs</a>
               <a class="btn btn-ghost" href="#product">See our dashboard</a>
-              <a class="btn btn-ghost" href="./google-ads-api.html">Google Ads API disclosure</a>
             </div>
           </div>
           <div class="hero-panel" aria-hidden="true">
@@ -88,6 +62,18 @@
           <li>Privacy-conscious operations</li>
         </ul>
       </section>
+
+      <aside
+        class="wrap home-reviewer-notice"
+        id="google-ads-api-review"
+        aria-labelledby="reviewer-notice-title">
+        <p id="reviewer-notice-title">
+          <strong>StemLabs</strong> publishes mobile apps (IAA) and runs <strong>Google Ads</strong> user acquisition for portfolios we operate.
+          Our internal <a href="https://dashboard.stemlabs.site/">StemLabs Dashboard</a> uses the documented <strong>Google Ads API</strong> for analytics on our accounts only — not resale to third-party advertisers.
+          <a href="./google-ads-api.html">Full API disclosure</a>
+          · <a href="./privacy-policy.html">Privacy</a>
+        </p>
+      </aside>
 
       <section class="section-pro wrap" id="what-we-do" aria-labelledby="wwd-heading">
         <header class="section-head">
@@ -159,7 +145,6 @@
           </a>
         </div>
       </section>
-
     </main>
 
     <footer class="site-footer site-footer--expanded">
