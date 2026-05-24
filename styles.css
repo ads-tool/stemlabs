@@ -19,7 +19,10 @@ body {
   color: var(--text);
   background: var(--bg-deep);
 }
-.wrap { width: min(1080px, calc(100% - 3rem)); margin-inline: auto; }
+.wrap {
+  width: min(1080px, calc(100% - clamp(1.25rem, 5vw, 3rem)));
+  margin-inline: auto;
+}
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .site-header {
@@ -28,7 +31,27 @@ a:hover { text-decoration: underline; }
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; flex-wrap: wrap; gap: 0.75rem; }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+@media (max-width: 540px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .site-nav {
+    width: 100%;
+    gap: 0.4rem 0.85rem;
+  }
+  .site-nav a {
+    font-size: 0.84rem;
+  }
+}
 .logo { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--text); }
 .logo-mark { color: var(--accent); font-size: 1.35rem; }
 .site-nav { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; }
@@ -66,8 +89,21 @@ a:hover { text-decoration: underline; }
 .site-footer { border-top: 1px solid var(--border); padding: 1.25rem 0 2.5rem; font-size: 0.875rem; color: var(--muted); }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
-.policy-document { padding: clamp(2rem, 6vw, 4rem) 0 4rem; }
-.policy-prose { max-width: 65ch; }
+.policy-document {
+  padding: clamp(2rem, 6vw, 4rem) 0 4rem;
+}
+
+/* Extra horizontal gutter on disclosure / privacy pages — avoids pasted-to-edge layout on phones */
+.policy-document > .wrap {
+  padding-inline: max(0.75rem, env(safe-area-inset-left));
+  padding-right: max(0.75rem, env(safe-area-inset-right));
+  box-sizing: border-box;
+}
+
+.policy-prose {
+  max-width: min(65ch, 100%);
+  min-width: 0;
+}
 .policy-lede.disclosure-lede { max-width: 58ch; }
 .disclosure-page .policy-lede br { display: none; }
 .policy-prose h1 { margin: 0 0 0.75rem; font-size: clamp(1.6rem, 3.5vw, 2rem); letter-spacing: -0.02em; }
@@ -110,14 +146,23 @@ a:hover { text-decoration: underline; }
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
 }
-.policy-prose .table-scroll { overflow-x: auto; margin: 0.65rem 0 1rem; -webkit-overflow-scrolling: touch; }
+.policy-prose .table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 0.65rem 0 1rem;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* Reviewer-focused disclosure tables & textual UI mock-ups */
 .review-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   font-size: 0.92rem;
   margin: 0.75rem 0 1.25rem;
+}
+.policy-prose .table-scroll > .review-table {
+  margin: 0;
 }
 .review-table th,
 .review-table td {
@@ -125,12 +170,23 @@ a:hover { text-decoration: underline; }
   padding: 0.5rem 0.65rem;
   vertical-align: top;
   color: var(--muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
+
 .review-table th {
   background: rgba(56, 189, 248, 0.08);
   color: var(--text);
   font-weight: 600;
-  width: min(14rem, 32%);
+}
+
+/* Two-column reviewer tables: keep label column modest; URL-heavy column gets the rest */
+.review-table thead th:first-child {
+  width: min(42%, 12rem);
+}
+.review-table tbody th[scope="row"] {
+  width: min(42%, 12rem);
 }
 .policy-prose .review-table a { word-break: break-word; }
 .reviewer-wireframe {
@@ -139,6 +195,8 @@ a:hover { text-decoration: underline; }
   border-radius: 10px;
   border: 1px dashed rgba(56, 189, 248, 0.45);
   background: rgba(56, 189, 248, 0.06);
+  overflow-x: auto;
+  max-width: 100%;
 }
 .reviewer-wireframe h3 {
   margin: 0 0 0.65rem;
@@ -148,11 +206,13 @@ a:hover { text-decoration: underline; }
 }
 .mock-surface {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-size: 0.72rem;
+  line-height: 1.45;
   color: rgba(232, 240, 252, 0.85);
   margin: 0;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 .anchor-note {
   font-size: 0.82rem;
