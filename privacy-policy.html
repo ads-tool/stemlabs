@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Privacy Policy for stemlabs.site — StemLabs product company site." />
+    <meta
+      name="description"
+      content="StemLabs Privacy Policy — StemLabs Dashboard, API integrations, and stemlabs.site. Contact, data categories, retention, and third-party terms." />
     <title>Privacy Policy — StemLabs</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230a1628' width='32' height='32'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='%2338bdf8'>S</text></svg>" />
@@ -11,21 +13,294 @@
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a href="./index.html" class="logo"><span class="logo-mark">◈</span><span class="logo-text">StemLabs</span></a>
-        <nav class="site-nav"><a href="./google-ads-api.html">Google Ads API</a><a href="./index.html">Home</a></nav>
+        <a href="./index.html" class="logo" aria-label="StemLabs home">
+          <span class="logo-mark">◈</span>
+          <span class="logo-text">StemLabs</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="./index.html">Home</a>
+          <a href="./google-ads-api.html">Google Ads API</a>
+          <a href="./privacy-policy.html" aria-current="page">Privacy Policy</a>
+          <a href="mailto:contact@stemlab.site">Contact</a>
+        </nav>
       </div>
     </header>
-    <main class="policy-document wrap">
-      <article class="policy-prose disclosure-page">
-        <h1>Privacy Policy · stemlabs.site</h1>
-        <p class="muted policy-lede">Effective: May 10, 2026</p>
-        <p>This site describes <strong>StemLabs</strong> (“we”), our publishing and integrations brand operated with organisational support from <strong>Binary Bridge Labs</strong> (referenced in full—we do not use the abbreviation “BBL”). We process basic technical data when you browse this marketing domain. For substantive privacy terms covering our authenticated StemLabs Dashboard, see also <a href="https://dashboard.stemlabs.site/privacy">dashboard.stemlabs.site/privacy</a>.</p>
-        <p>Contact: <a href="mailto:contact@stemlabs.site">contact@stemlabs.site</a>.</p>
-        <p>For how we reference Google Ads API use on our own advertiser accounts from a compliance standpoint, see <a href="./google-ads-api.html">Google Ads API integration</a>.</p>
-      </article>
+
+    <main id="main" class="policy-document">
+      <div class="wrap">
+        <article class="policy-prose disclosure-page" aria-label="StemLabs Privacy Policy">
+          <h1>Privacy Policy</h1>
+          <div class="policy-meta">
+            Last updated: <strong>May 2, 2026</strong> · Effective: <strong>May 2, 2026</strong> · Applies to:
+            <strong>StemLabs Dashboard, related API integrations, and this marketing site (stemlabs.site)</strong>
+          </div>
+          <p>
+            This is the same substantive policy published at
+            <a href="https://dashboard.stemlabs.site/privacy">https://dashboard.stemlabs.site/privacy</a>
+            for our authenticated dashboard. Here it is offered on stemlabs.site for transparency and links from our
+            company site. Browsing this marketing domain may involve minimal technical data (see your browser settings);
+            the sections below govern how we access and use advertising and monetisation data through our internal tools.
+          </p>
+
+          <h2>1. Introduction</h2>
+          <p>
+            We operate the <strong>StemLabs Dashboard</strong>, an internal analytics platform for our publishing
+            operations and associated developer applications registered with third-party advertising networks including Meta
+            (Facebook), Google, TikTok, and others.
+          </p>
+          <p>
+            This Privacy Policy explains how we collect, use, store, and protect information accessed through those
+            platform APIs when operating our internal tools and services. By using our applications or granting API access to
+            our services, you agree to the practices described in this policy.
+          </p>
+
+          <h2>2. Contact information</h2>
+          <div class="table-scroll">
+            <table class="review-table" aria-label="StemLabs contact details">
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <th scope="col">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Company / brand</th>
+                  <td>StemLabs</td>
+                </tr>
+                <tr>
+                  <th scope="row">Platform</th>
+                  <td>StemLabs Dashboard</td>
+                </tr>
+                <tr>
+                  <th scope="row">Platform URL</th>
+                  <td><a href="https://dashboard.stemlabs.site">https://dashboard.stemlabs.site</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">Public company site</th>
+                  <td><a href="https://stemlabs.site">https://stemlabs.site</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">Contact email</th>
+                  <td><a href="mailto:contact@stemlab.site">contact@stemlab.site</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">Purpose</th>
+                  <td>Internal advertising analytics &amp; campaign management tooling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>3. Data we access via third-party APIs</h2>
+          <p>Our applications access the following categories of data through authorized API connections:</p>
+          <div class="table-scroll">
+            <table class="review-table" aria-label="Data categories by source and purpose">
+              <thead>
+                <tr>
+                  <th scope="col">Data category</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ad campaign metrics<br /><small>(spend, impressions, clicks, installs)</small></td>
+                  <td>
+                    <div class="pp-badges">
+                      <span class="pp-badge">Meta Ads</span>
+                      <span class="pp-badge">Google Ads</span>
+                      <span class="pp-badge">TikTok Ads</span>
+                      <span class="pp-badge">Pangle</span>
+                    </div>
+                  </td>
+                  <td>Performance analytics &amp; ROI reporting</td>
+                </tr>
+                <tr>
+                  <td>Ad revenue metrics<br /><small>(impressions, eCPM, revenue)</small></td>
+                  <td>
+                    <div class="pp-badges">
+                      <span class="pp-badge">Google AdMob</span>
+                      <span class="pp-badge">Audience Network</span>
+                    </div>
+                  </td>
+                  <td>Monetization analytics &amp; dashboard</td>
+                </tr>
+                <tr>
+                  <td>Attribution data<br /><small>(install source, post-install events)</small></td>
+                  <td>
+                    <div class="pp-badges">
+                      <span class="pp-badge">AppsFlyer</span>
+                      <span class="pp-badge">Adjust</span>
+                    </div>
+                  </td>
+                  <td>User acquisition attribution &amp; cohort analysis</td>
+                </tr>
+                <tr>
+                  <td>Campaign structure<br /><small>(campaign / ad set / ad names and IDs)</small></td>
+                  <td>
+                    <div class="pp-badges">
+                      <span class="pp-badge">Meta Ads</span>
+                      <span class="pp-badge">Google Ads</span>
+                      <span class="pp-badge">TikTok Ads</span>
+                    </div>
+                  </td>
+                  <td>Campaign management &amp; optimization</td>
+                </tr>
+                <tr>
+                  <td>Geographic breakdown<br /><small>(country-level aggregate spend &amp; revenue)</small></td>
+                  <td>All networks above</td>
+                  <td>Geographic performance analysis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pp-highlight" role="note">
+            <strong>Important:</strong> We do not access, store, or process any personally identifiable information (PII) of
+            individual end-users, Facebook users, or app users. All data accessed is
+            <strong>aggregate advertising metrics</strong> at the campaign, ad set, or geographic level only.
+          </div>
+
+          <h2>4. How we use accessed data</h2>
+          <p>Data accessed through third-party APIs is used exclusively for:</p>
+          <ul>
+            <li>
+              <strong>Internal analytics:</strong> Generating performance dashboards for our own advertising campaigns and
+              monetized applications.
+            </li>
+            <li>
+              <strong>Campaign optimization:</strong> Identifying high-performing campaigns, ad sets, and creatives to inform
+              budget allocation decisions.
+            </li>
+            <li>
+              <strong>ROAS &amp; profitability reporting:</strong> Blending ad spend data with ad revenue data to compute
+              profit and return on ad spend.
+            </li>
+            <li>
+              <strong>Automated campaign management:</strong> Pausing underperforming campaigns or adjusting budgets via API
+              based on performance thresholds.
+            </li>
+          </ul>
+          <p>
+            We do <strong>not</strong> sell, license, share, or transfer any data obtained through these APIs to any third
+            party. Data is used solely for internal business operations of StemLabs Dashboard and related StemLabs-managed
+            integrations.
+          </p>
+
+          <h2>5. Data storage &amp; security</h2>
+          <ul>
+            <li>All API data is stored in a <strong>private PostgreSQL database</strong> hosted on our internal infrastructure.</li>
+            <li>The database is not publicly accessible; access is restricted to authenticated internal systems only.</li>
+            <li>
+              API credentials and access tokens are stored with encryption at rest and are never exposed in logs or public
+              repositories.
+            </li>
+            <li>We use HTTPS/TLS for all data transmission between our systems and third-party APIs.</li>
+            <li>Access to the analytics platform is restricted to authorised <strong>StemLabs</strong> personnel.</li>
+          </ul>
+
+          <h2>6. Data retention</h2>
+          <p>
+            Aggregate ad metrics are retained for up to <strong>2 years</strong> to support historical trend analysis. API
+            credentials and access tokens are retained only as long as the integration is active and are securely deleted
+            upon deactivation.
+          </p>
+          <p>
+            Data accessed from Meta APIs is not retained beyond <strong>90 days</strong> in raw form; only aggregated
+            summaries are kept long-term, in accordance with Meta Platform Terms.
+          </p>
+
+          <h2>7. Third-party platform compliance</h2>
+          <p>Our use of third-party APIs complies with the respective platform terms:</p>
+          <ul>
+            <li>
+              <a href="https://developers.facebook.com/terms/" target="_blank" rel="noopener noreferrer">Meta Platform Terms
+                &amp; Developer Policies</a>
+            </li>
+            <li><a href="https://developers.google.com/terms" target="_blank" rel="noopener noreferrer">Google APIs Terms of Service</a></li>
+            <li>
+              <a href="https://ads.tiktok.com/marketing_api/docs?id=1735804860631553" target="_blank" rel="noopener noreferrer"
+                >TikTok for Business API Terms</a>
+            </li>
+            <li>
+              <a href="https://support.appsflyer.com/hc/en-us/articles/207032066" target="_blank" rel="noopener noreferrer"
+                >AppsFlyer API Terms</a>
+            </li>
+          </ul>
+          <p>
+            Data obtained from Meta APIs is used solely in compliance with
+            <a href="https://developers.facebook.com/devpolicy/" target="_blank" rel="noopener noreferrer"
+              >Meta&apos;s Platform Policy</a>, including restrictions on data use, transfer, and storage.
+          </p>
+
+          <h2>8. Cookies &amp; tracking</h2>
+          <p>
+            The StemLabs Dashboard uses session cookies solely for authentication purposes. We do not use third-party
+            tracking cookies, analytics SDKs, or advertising pixels on our internal dashboard. No user behavioral data is
+            collected from visitors to that authenticated platform through cross-site trackers described here.
+          </p>
+
+          <h2>9. Your rights</h2>
+          <p>If you are a user who has granted API access to our applications, you may revoke that access at any time through the respective platform&apos;s settings:</p>
+          <ul>
+            <li>
+              <strong>Meta:</strong> Business Settings → System Users → Remove token, or revoke app access via Facebook
+              Settings → Apps and Websites.
+            </li>
+            <li><strong>Google:</strong> Google Account → Security → Third-party apps with account access.</li>
+            <li><strong>TikTok:</strong> TikTok Ads Manager → Account Settings → API Management.</li>
+          </ul>
+          <p>
+            To request deletion of any data we hold, contact us at
+            <a href="mailto:contact@stemlab.site">contact@stemlab.site</a>. We will respond within 30 days.
+          </p>
+
+          <h2>10. Changes to this policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. The &quot;Last updated&quot; date at the top of this page
+            will reflect the most recent revision. Continued use of our services after any changes constitutes acceptance of
+            the updated policy.
+          </p>
+
+          <h2>11. Contact us</h2>
+          <p>For privacy-related questions or requests:</p>
+          <div class="table-scroll">
+            <table class="review-table" aria-label="Privacy contact methods">
+              <thead>
+                <tr>
+                  <th scope="col">Method</th>
+                  <th scope="col">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Email</th>
+                  <td><a href="mailto:contact@stemlab.site">contact@stemlab.site</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">Dashboard</th>
+                  <td><a href="https://dashboard.stemlabs.site">https://dashboard.stemlabs.site</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted-small">
+            Google Ads API disclosure for our own accounts:
+            <a href="./google-ads-api.html">Google Ads API integration</a>.
+          </p>
+        </article>
+      </div>
     </main>
+
     <footer class="site-footer">
-      <div class="wrap footer-inner"><span>© <span id="year"></span> StemLabs · Binary Bridge Labs</span></div>
+      <div class="wrap footer-inner">
+        <span>© <span id="year"></span> StemLabs. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./google-ads-api.html">Google Ads API</a>
+          <a href="./privacy-policy.html">Privacy</a>
+        </div>
+      </div>
     </footer>
     <script src="./app.js" defer></script>
   </body>

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="StemLabs — mobile app publisher building internal analytics including Google Ads API reporting for UA on accounts we operate." />
-    <title>StemLabs — Publisher analytics & UA</title>
+      content="StemLabs — mobile app publisher with StemLabs Dashboard, our internal HTTPS product that uses Google Ads API for UA reporting on accounts we operate. Scope, OAuth, privacy and live links for API Center reviewers." />
+    <title>StemLabs — Mobile publisher &amp; analytics</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="canonical" href="https://stemlabs.site/" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230a1628' width='32' height='32'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='%2338bdf8'>S</text></svg>" />
   </head>
-  <body>
+  <body class="home">
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap header-inner">
         <a href="./index.html" class="logo" aria-label="StemLabs home">
@@ -19,66 +20,171 @@
           <span class="logo-text">StemLabs</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
+          <a href="#what-we-do">What we do</a>
+          <a href="#product">Product</a>
           <a href="./google-ads-api.html">Google Ads API</a>
-          <a href="./privacy-policy.html">Privacy Policy</a>
-          <a href="mailto:contact@stemlabs.site">contact@stemlabs.site</a>
+          <a href="#privacy">Privacy</a>
+          <a href="mailto:contact@stemlab.site">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero wrap">
-        <p class="eyebrow">Mobile publisher</p>
-        <h1>IAA portfolios, UA analytics &amp; advertising APIs</h1>
-        <p class="hero-lede">
-          StemLabs develops consumer apps financed through in‑app ads. We run user‑acquisition
-          including Google Ads and blend marketing cost with monetisation data in an internal HTTPS
-          dashboard for our teams.
-          StemLabs is our public-facing brand for publishing and integrations; organisational context:
-          Binary Bridge Labs.
-        </p>
-      </section>
-
-      <section class="disclosure-banner wrap" id="google-ads-compliance" aria-label="Google Ads API compliance note">
-        <p class="banner-label">Google Ads API application — site context</p>
+    <main id="main">
+      <!-- Explicit API-application context — reviewers expect this on stemlabs.site (public company URL in API Center) -->
+      <div
+        class="wrap disclosure-banner reviewer-site-banner"
+        id="google-ads-api-review"
+        aria-labelledby="reviewer-banner-title">
+        <p class="banner-label" id="reviewer-banner-title">Google Ads API — company website context</p>
         <p>
-          <strong>StemLabs</strong> integrates the official <strong>Google Ads API</strong> for
-          <strong>our own advertiser accounts only</strong> (reporting today; bounded optimisation
-          and campaign flows on our roadmap — see detailed permitted‑use wording). Compliance summary:
-          <a href="./google-ads-api.html">Google Ads API integration (StemLabs)</a>.
-          Live product URL:
-          <a href="https://dashboard.stemlabs.site/">StemLabs Dashboard</a>.
+          <strong>StemLabs</strong> (<strong>stemlabs.site</strong>) is our public-facing company presence for policies and
+          compliance. StemLabs publishes consumer mobile apps; we monetise largely through <strong>in-app advertising</strong>
+          and run <strong>user acquisition</strong> including <strong>Google Ads</strong>.
         </p>
+        <p>
+          Our <strong>StemLabs Dashboard</strong> (<a href="https://dashboard.stemlabs.site/">https://dashboard.stemlabs.site/</a>,
+          HTTPS) is <strong>internal-only</strong> software that uses Google’s documented <strong>Google Ads API</strong> flows
+          to ingest account performance data for portfolios <strong>we operate ourselves</strong>, combined with monetisation KPIs —
+          so operators see cost, revenue, and ROAS in one place.
+          We <strong>do not sell</strong> Google Ads API access as a standalone product to unrelated advertisers.
+        </p>
+        <p class="muted-small reviewer-banner-links">
+          <a href="./google-ads-api.html">Full technical disclosure — scope, permissible use, OAuth, architecture &amp; privacy</a>
+          · <a href="./privacy-policy.html">Privacy policy (stemlabs.site)</a>
+          · <a href="https://dashboard.stemlabs.site/privacy">Privacy (authenticated dashboard)</a>
+        </p>
+      </div>
+
+      <section class="hero-pro wrap" aria-labelledby="hero-heading">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Mobile products &amp; growth</p>
+            <h1 id="hero-heading">We ship apps—and the analytics that steer them</h1>
+            <p class="hero-lede-pro">
+              StemLabs designs and publishes consumer mobile experiences, with revenue driven largely by in-app ads. Our teams combine product craft with disciplined performance marketing so we scale what users keep and monetise sustainably.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:contact@stemlab.site">Talk to StemLabs</a>
+              <a class="btn btn-ghost" href="#product">See our dashboard</a>
+              <a class="btn btn-ghost" href="./google-ads-api.html">Google Ads API disclosure</a>
+            </div>
+          </div>
+          <div class="hero-panel" aria-hidden="true">
+            <div class="hero-panel-inner">
+              <span class="hero-panel-label">StemLabs Dashboard</span>
+              <span class="hero-panel-meta">Acquisition · Revenue · Margin</span>
+              <div class="hero-panel-bars">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="section wrap" id="dashboard">
-        <h2>StemLabs Dashboard</h2>
-        <p class="muted">
-          Our internal StemLabs Dashboard (HTTPS) merges acquisition cost signals with publisher
-          revenue views so operators can reconcile spend and ad revenue for apps we operate. OAuth
-          access is constrained to StemLabs-managed integrations; we do not provide API resale to
-          third‑party advertisers.
-        </p>
+      <section class="pill-strip wrap" aria-label="Focus areas">
+        <ul class="pill-list">
+          <li>Publisher-owned apps</li>
+          <li>User acquisition discipline</li>
+          <li>Privacy-conscious operations</li>
+        </ul>
       </section>
 
-      <section class="section wrap" id="integrations">
-        <h2>Public integrations disclosed on this domain</h2>
-        <p class="muted">
-          The page <a href="./google-ads-api.html">Google Ads API integration</a> documents how we plan
-          to use reads and gated writes for StemLabs-managed Google Ads campaigns. Related privacy
-          text for stemlabs.site is at <a href="./privacy-policy.html">Privacy Policy</a>.
-          Additional policy text for users of the authenticated dashboard appears at
-          <a href="https://dashboard.stemlabs.site/privacy">dashboard.stemlabs.site/privacy</a>.
-        </p>
+      <section class="section-pro wrap" id="what-we-do" aria-labelledby="wwd-heading">
+        <header class="section-head">
+          <h2 id="wwd-heading">What we do</h2>
+          <p class="section-sub">
+            StemLabs is a mobile-centric studio: we conceive, ship, and improve apps backed by measurable growth loops—not a marketplace for advertising tools sold to outsiders.
+          </p>
+        </header>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Build</h3>
+            <p>We develop consumer apps tuned for retention and monetisation pathways that fit real usage patterns—not one-off installs.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Grow</h3>
+            <p>Paid UA, store presence, and partner channels sit alongside clear reporting so we allocate budget where cohorts repay acquisition cost.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Measure</h3>
+            <p>An internal StemLabs Dashboard unifies acquisition spend with publisher monetisation signals so operators see profit and ROAS in one place—not scattered spreadsheets.</p>
+          </article>
+        </div>
       </section>
+
+      <section class="section-pro section-pro--alt wrap" id="product" aria-labelledby="product-heading">
+        <header class="section-head">
+          <h2 id="product-heading">StemLabs Dashboard</h2>
+          <p class="section-sub">
+            A secure, HTTPS internal console our teams use to reconcile marketing investment with monetisation—for portfolios we operate ourselves.
+          </p>
+        </header>
+        <div class="product-spotlight">
+          <div class="product-spotlight-body">
+            <ul class="product-bullets">
+              <li>Blended views of acquisition cost and ad revenue KPIs.</li>
+              <li>Oriented toward portfolio-level profitability, not resale to unrelated advertisers.</li>
+              <li>Credentials and vendor integrations constrained to StemLabs-managed accounts.</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-primary btn-sm" href="https://dashboard.stemlabs.site/" rel="noopener noreferrer">Open dashboard</a>
+              <span class="product-note muted-small">Authenticated access for StemLabs personnel.</span>
+            </div>
+          </div>
+          <aside class="product-aside muted-small">
+            <p>
+              Same policy text on stemlabs.site:<br /><a href="./privacy-policy.html">Privacy Policy</a>
+              ·
+              <a href="https://dashboard.stemlabs.site/privacy">dashboard copy</a>
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-pro wrap" id="privacy" aria-labelledby="privacy-heading">
+        <header class="section-head">
+          <h2 id="privacy-heading">Privacy &amp; trust</h2>
+          <p class="section-sub">
+            We publish clear notices for visitors to this marketing site and for users of authenticated properties.
+          </p>
+        </header>
+        <div class="link-cards">
+          <a class="link-card" href="./privacy-policy.html">
+            <span class="link-card-title">Privacy policy</span>
+            <span class="link-card-desc">Full policy for StemLabs Dashboard integrations and stemlabs.site (aligned with the dashboard privacy URL).</span>
+          </a>
+          <a class="link-card" href="./google-ads-api.html">
+            <span class="link-card-title">Developer &amp; API disclosure</span>
+            <span class="link-card-desc">Technical context for StemLabs-managed advertising integrations—including Google Ads API.</span>
+          </a>
+        </div>
+      </section>
+
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <span>© <span id="year"></span> StemLabs · Binary Bridge Labs</span>
-        <div class="footer-links">
+    <footer class="site-footer site-footer--expanded">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <span class="logo-mark logo-mark-footer">◈</span>
+          <span class="footer-brand-name">StemLabs</span>
+          <p class="footer-tag muted-small">Mobile publisher · internal analytics</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Site</span>
+          <a href="#what-we-do">What we do</a>
+          <a href="#product">Product</a>
           <a href="./google-ads-api.html">Google Ads API</a>
-          <a href="./privacy-policy.html">Privacy</a>
+          <a href="#privacy">Privacy</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Legal</span>
+          <a href="./privacy-policy.html">Privacy policy</a>
+          <a href="./google-ads-api.html">API &amp; integrations</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Contact</span>
+          <a href="mailto:contact@stemlab.site">contact@stemlab.site</a>
+          <span class="muted-small">&copy; <span id="year"></span> StemLabs.</span>
         </div>
       </div>
     </footer>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="StemLabs use of Google Ads API — internal analytics for our own advertiser accounts only; permitted use summary for compliance review." />
+      content="StemLabs Google Ads API disclosure: product identifiers, internal business model, GAQL reporting, OAuth architecture, permissible use roadmap, textual dashboard mock-ups, privacy links." />
     <title>Google Ads API integration — StemLabs</title>
     <link rel="stylesheet" href="./styles.css" />
     <link
@@ -33,67 +33,508 @@
           <p class="eyebrow disclosure-eyebrow">Developer disclosure · compliance</p>
           <h1>StemLabs use of Google Ads API</h1>
           <p class="muted policy-lede disclosure-lede">
-            This page summarizes how <strong>StemLabs</strong> (mobile app publisher) uses the
-            <strong>Google Ads API</strong> in connection with our own advertising accounts. We do
-            not resell API access as a standalone commercial service to unrelated third parties.
+            This document is aimed at API Center and policy reviewers. The <strong>stemlabs.site</strong> homepage likewise states,
+            upfront, why this domain exists alongside our Ads API registration: publisher identity, Google Ads UA context,
+            and that <strong>StemLabs Dashboard</strong> is internal-only tooling. Technical detail follows below.<br />
+            <strong>StemLabs</strong> is a
+            mobile app publisher. We integrate the official <strong>Google Ads API</strong> strictly
+            to operate <strong>our own advertiser accounts</strong> inside internal analytics
+            software. We <strong>do not</strong> commercialise Google Ads API access as an external
+            product for unrelated advertisers.
           </p>
 
-          <h2>Organizational identity</h2>
+          <h2 id="application-identifiers">Application & product identifiers</h2>
+          <table class="review-table" aria-label="Application and product identifiers">
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Organization / publisher</th>
+                <td><strong>StemLabs</strong> (consumer mobile apps; monetised largely via IAA)</td>
+              </tr>
+              <tr>
+                <th scope="row">Product name</th>
+                <td><strong>StemLabs Dashboard</strong> — internal UA & monetisation analytics</td>
+              </tr>
+              <tr>
+                <th scope="row">Live application URL</th>
+                <td>
+                  <a href="https://dashboard.stemlabs.site/">https://dashboard.stemlabs.site/</a>
+                  <span class="anchor-note">(HTTPS; authenticated app surface)</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Public marketing domain</th>
+                <td>
+                  <a href="https://stemlabs.site/">https://stemlabs.site/</a>
+                  <span class="anchor-note">(this disclosure &amp; company context)</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">API / compliance email</th>
+                <td><a href="mailto:contact@stemlab.site">contact@stemlab.site</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Privacy policies</th>
+                <td>
+                  Marketing site:
+                  <a href="./privacy-policy.html">stemlabs.site/privacy-policy.html</a> · Signed-in app:
+                  <a href="https://dashboard.stemlabs.site/privacy">dashboard.stemlabs.site/privacy</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">End users of the Ads integration</th>
+                <td>Authorised StemLabs operators only — not arbitrary third-party advertisers</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="business-model">Business model &amp; permissible scope</h2>
           <p>
-            <strong>StemLabs</strong> is the publishing and integrations brand used in product,
-            dashboards, developer registrations, and partner-facing identity.
-            Supporting legal and organisational context is provided by <strong>Binary Bridge Labs</strong>.
-            We do not abbreviate Binary Bridge Labs as “BBL”.
+            <strong>StemLabs earns revenue primarily from in-app advertising (IAA)</strong> on apps we
+            build and distribute. We fund <strong>user acquisition (UA)</strong> via performance
+            marketing; <strong>Google Ads</strong> is among our UA channels.
+
+            StemLabs Dashboard is <strong>not</strong> a multi-tenant “ads SaaS”: it merges
+            <strong>acquisition spend</strong> from Google Ads (and analogous sources we configure)
+            with <strong>publisher monetisation aggregates</strong> so we can compute cost, revenue,
+            profit and ROAS for assets we operate.
+          </p>
+          <ul>
+            <li>We promote <strong>apps and portfolios we operate</strong>, not unmanaged third-party inventories.</li>
+            <li>We respect Google’s <strong>permissible-use</strong> classes we select in API Center (reporting today; optimisation / campaign management only as declared and gated).</li>
+          </ul>
+
+          <h2 id="product-context">Product context</h2>
+          <p>
+            StemLabs distributes consumer apps where revenue is overwhelmingly IAA-backed. Typical
+            Google Ads footprints include mobile growth surfaces (<strong>App campaigns</strong>,
+            <strong>Performance Max</strong> with application objectives).
+
+            StemLabs Dashboard (see live URL above) is the authorised interface where internal teams:
+
+          </p>
+          <ul>
+            <li>Reconcile acquisition cost with monetisation KPIs (<strong>ROAS-centric</strong> views).</li>
+            <li>Use tabular layouts (examples: profitability blend, cost detail, geography, mediation / app).</li>
+            <li>Optional <strong>CSV export</strong> where the UI exposes it.</li>
+          </ul>
+          <p>
+            <strong>OAuth</strong>, refresh-token storage, Ads API quotas, developer token usage, and
+            customer routing are constrained to StemLabs-managed integration records — browsers call
+            <strong>our backend only</strong>.
           </p>
 
-          <h2>Product context</h2>
+          <h2 id="api-use-case">Google Ads API use case — shipped vs roadmap</h2>
+          <table class="review-table" aria-label="Shipped versus roadmap Ads API behaviour">
+            <thead>
+              <tr>
+                <th scope="col">Phase</th>
+                <th scope="col">What we do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><strong>In production today</strong> (Reporting)</th>
+                <td>
+                  Server-side scheduled and on-demand <strong>read</strong> traffic via Ads API —
+                  principally <strong>GAQL queries</strong> using
+                  <code>GoogleAdsService.SearchStream</code> / Search-style reporting — against
+                  <strong>customer IDs tied to StemLabs-managed OAuth authorisations</strong>. Results
+                  land in private <strong>PostgreSQL</strong> and power dashboard charts and extracts.
+                  When using a manager (MCC) relationship, HTTP header
+                  <code>login-customer-id</code> is supplied per Google Ads API guidance alongside the
+                  target <code>customer_id</code>.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><strong>Roadmap</strong> (Optimisation)</th>
+                <td>
+                  <strong>Governed</strong>, narrowly scoped mutate operations affecting <strong>our</strong>
+                  campaigns only — e.g., <strong>budget adjustments</strong> and
+                  <strong>ENABLED/PAUSED</strong> transitions — gated by approvals, auditing, quotas,
+                  and validate-only tooling where relevant. Separate job runners from ingestion.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><strong>Roadmap</strong> (Creation)</th>
+                <td>
+                  Optional constrained creation of high-leverage UA structures (e.g.
+                  <strong>App campaigns</strong>, <strong>Performance Max</strong>) with playbook-bound
+                  fields — not open-ended provisioning for unrelated advertisers.
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="technical-overview">Technical overview (architecture)</h2>
+          <table class="review-table" aria-label="Technical stack summary">
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">StemLabs Dashboard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Client</th>
+                <td>React SPA (HTTPS-only public origin <code>dashboard.stemlabs.site</code>).</td>
+              </tr>
+              <tr>
+                <th scope="row">Application API</th>
+                <td>Node.js HTTPS services — exposes REST to the UI; persists sessions &amp; config.</td>
+              </tr>
+              <tr>
+                <th scope="row">Data warehouse</th>
+                <td>PostgreSQL — stores blended marketing + monetisation facts &amp; aggregates.</td>
+              </tr>
+              <tr>
+                <th scope="row">Google Ads API calls</th>
+                <td>
+                  Issued solely from StemLabs-controlled server jobs using registered
+                  <code>developer-token</code>. Browser never obtains Ads developer credentials.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">OAuth</th>
+                <td>
+                  We configure scopes exactly as mandated in the current
+                  <a
+                    href="https://developers.google.com/google-ads/api/docs/oauth/overview"
+                    rel="noopener noreferrer"
+                    >Google Ads API OAuth documentation</a>.
+
+                  Authorized Google identities supply refresh-token material which we store securely for
+                  server-to-server ingestion and (later) guarded mutations tied to approval flows.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Reads (examples)</th>
+                <td>
+                  GAQL across campaign hierarchy, segments such as date, geography, paired with
+                  performance metrics suited to UA reconciliations.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="system-architecture">System architecture (detailed)</h2>
           <p>
-            StemLabs builds and distributes consumer apps monetized primarily through
-            <strong>in-app advertising (IAA)</strong>. We buy user acquisition, including campaigns
-            on Google Ads surfaces relevant to mobile growth (such as App campaigns and Performance
-            Max with app-focused goals).
+            StemLabs separates <strong>operator-facing browser traffic</strong> from
+            <strong>privileged Google Ads server jobs</strong>. The SPA never obtains developer tokens
+            nor refresh-token material — only StemLabs backends call Google.&nbsp;<strong>Note:</strong> This
+            section describes <strong>Google Ads</strong>. It is unrelated to Meta <strong>Business
+            Manager</strong> approvals; UA from Meta flows through separate documented APIs.
           </p>
-          <p>
-            Our internal web application, operational at
-            <a href="https://dashboard.stemlabs.site/">https://dashboard.stemlabs.site/</a>,
-            aggregates marketing cost with publisher revenue indicators to analyse
-            <strong>cost, revenue, profit, and ROAS</strong> for our portfolios. OAuth and
-            credential handling are confined to integrations we authorize.
+          <div class="mermaid-wrap" aria-label="StemLabs Dashboard architecture diagram">
+            <div class="mermaid">
+flowchart TB
+    U[["StemLabs operator office or VPN"]] --> SPA[["Dashboard SPA"]]
+    SPA --> API[["Node.js HTTPS REST API"]]
+    API --> PG[("PostgreSQL facts and Ads credentials rows")]
+    J[["Reporting sync runners"]] --> PG
+    J --> GA[["Google Ads API GAQL"]]
+    J --> TOK[["OAuth 2 Google token endpoint"]]
+            </div>
+          </div>
+          <p class="muted">
+            Optional <strong>IP allowlisting</strong> sits at the perimeter so only StemLabs gateways
+            load <code>/login</code>, <code>/</code>, <code>/assets/*</code>, and gated APIs —
+            reviewers can still retrieve <strong>GET <a href="https://dashboard.stemlabs.site/privacy">/privacy</a></strong>
+
+            plus <strong>/api/health</strong>
+
+            probes without dashboard login.&nbsp;See also
+            <a href="#access-control-ip">dashboard access policy</a>.
           </p>
 
-          <h2>Permitted use (summary)</h2>
+          <h2 id="oauth2-google-ads-flow">OAuth 2.0 for Google Ads access (delegation chain)</h2>
+          <div class="review-callout" role="note">
+            <strong>Not Meta Business Manager.</strong>&nbsp;<strong>Google Ads</strong> authorisation rides on
+            the <strong>Google Account</strong> that completes OAuth consent plus that account&apos;s Ads
+            <strong>hierarchy grants</strong> (standard / administrative access on the advertiser or manager
+            MCC subtree). Invite flows from Meta BM do not apply here.
+          </div>
+          <p>
+            <strong>(1)</strong>&nbsp;A Google organisational user who already holds Google Ads access for the
+            manager or advertiser accounts where StemLabs buys media (principal seats atop an MCC or linked child
+            customers StemLabs monetises).
+
+            <strong>(2)</strong>&nbsp;A company-controlled GCP OAuth client labelled for StemLabs Ads API tooling.
+
+            <strong>(3)</strong>&nbsp;StemLabs backend services redeem one-time OAuth authorisation artefacts
+            without ever embedding developer-token material inside browsers.
+
+          </p>
+          <p>
+            <strong>Delegation steps.&nbsp;(a)</strong> The authorised Ads user launches Google&apos;s OAuth
+            consent for the StemLabs-labelled client with scopes enumerated in Google&apos;s
+            <a href="https://developers.google.com/google-ads/api/docs/oauth/overview" rel="noopener noreferrer"
+              >current Ads OAuth guide</a>
+            .
+
+            <strong>(b)</strong> Google returns an ephemeral authorisation reference to StemLabs tooling (setup
+            session or scripted exchange) reachable only internally.
+
+            <strong>(c)</strong> StemLabs exchanges that reference for OAuth <strong>access + offline
+              refresh-token</strong> material that we persist beside the Ads <code>customer_id</code> being
+            connected.
+
+            <strong>(d)</strong> Subsequent reporting jobs authenticate with bearer material derived from the
+            refresh token; when traversing manager accounts StemLabs transmits the requisite
+            <code>login-customer-id</code> header mandated by Ads API semantics.
+
+            <strong>(e)</strong> Account-level revocation inside Google Ads or Google Workspace immediately
+            invalidates future StemLabs retries — StemLabs rotates credentials only via another explicit user
+            approval.
+          </p>
+          <div class="mermaid-wrap" aria-label="OAuth 2 sequence for Google Ads ingestion">
+            <div class="mermaid">
+sequenceDiagram
+    autonumber
+    participant U as AuthorisedAdsUser
+    participant O as Google_OAuth_Consent
+    participant B as StemLabs_backend
+    participant A as Google_Ads_API
+    U->>O: Opens consent for StemLabs OAuth client Ads scopes only
+    O->>U: Displays scope disclosures from GoogleAds doc bundle
+    U->>O: Grants access to selected Ads assets
+    O->>B: HTTPS redirect bearer one_time_auth_code
+    B->>O: HTTPS token exchange secured client_credentials
+    O->>B: Access_and_refresh_token_pair
+    Note over B: Refresh token persists server-side keyed to CID plus optional_login_customer_header
+    loop Scheduled_GAQL_sync
+      B->>A: Bearer plus developer-token plus login_customer_id when querying through MCC
+      A-->>B: Streams metrics aggregates for Postgres ingestion
+    end
+            </div>
+          </div>
+
+          <h2 id="access-control-ip">Dashboard access control layers & optional IP perimeter</h2>
+          <p>
+            StemLabs deployments layer overlapping controls:&nbsp;<strong>(1)</strong>&nbsp;password-backed
+            sessions backed by HttpOnly Secure cookies sealed with&nbsp;<code>SESSION_SECRET</code>.
+
+            &nbsp;<strong>(2)</strong>&nbsp;Signed-in browsing runs only on HTTPS fronts with coarse API rate ceilings.
+
+            &nbsp;<strong>(3)</strong>&nbsp;PostgreSQL hosts live on private subnets or VPC-peered interfaces without public ingress unless StemLabs infra explicitly bridges them.
+
+            &nbsp;<strong>(4)</strong>&nbsp;A non-empty
+
+            <code>DASHBOARD_ALLOWED_IP_CIDRS</code>
+
+            list forces Express-level rejections for every non-matching client before HTML/JSON payloads leave the Node process (dashboard SPA, assets, guarded APIs.)
+
+          </p>
+          <p>
+            Bypass list for auditors and uptime checks remains open:
+
+            <strong>GET /privacy</strong>,
+
+            <strong>GET /api/health</strong>,
+
+            <strong>GET /api/health/db</strong>,
+
+            plus
+
+            <strong>OPTIONS /api/auth/*</strong>
+
+            preflights configured with <code>CORS_ORIGINS</code>. Behind reverse proxies StemLabs pairs
+
+            <code>TRUST_PROXY=1</code>
+
+            (or the hop-count your terminator documents) so
+
+            <code>X-Forwarded-For</code>
+
+            feeding Express matches operators&apos; egress ranges.
+
+          </p>
+          <table class="review-table" aria-label="Access control layering">
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">StemLabs posture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Perimeter IPs</th>
+                <td>
+                  Optional comma-separated IPv4 rules keep dashboard login plus analytics surfaces off the
+                  public Internet; StemLabs operators connect via VPN gateways whose egress IPs populate
+
+                  <code>DASHBOARD_ALLOWED_IP_CIDRS</code>.
+
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Application auth</th>
+                <td>
+                  Mandatory shared secrets whenever StemLabs sets both
+
+                  <code>DASHBOARD_PASSWORD</code>
+
+                  and corresponding
+
+                  <code>SESSION_SECRET</code>; brute-force tempered via login rate-limit middleware.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Secrets handling</th>
+                <td>
+                  Google OAuth client secrets plus refresh-token blobs live exclusively in StemLabs Postgres
+                  rows accessible through authenticated API routes invoked by StemLabs-controlled credentials.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="data-security">Data security & segregation</h2>
+          <table class="review-table" aria-label="Data security checklist">
+            <thead>
+              <tr>
+                <th scope="col">Topic</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Transport</th>
+                <td>Temporary credentials (dashboard login, bearer tokens minted mid-request) traverse TLS 1.2+ only.</td>
+              </tr>
+              <tr>
+                <th scope="row">At-rest storage</th>
+                <td>
+                  Marketing cost + monetisation aggregates stay inside Postgres with OS/disk protections from
+                  the hosting provider.&nbsp;(Customer-managed encryption hinges on infra policy — contact
+                  <a href="mailto:contact@stemlab.site">contact@stemlab.site</a>
+
+
+                  if reviewers need attestation artefacts.)
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Credential minimisation</th>
+                <td>
+                  StemLabs rotates refresh tokens lazily,&nbsp;reuses least-privilege Google Ads scope bundles,
+                  and isolates ingestion vs future mutation queues so erroneous writes cannot masquerade as reads.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Audit & anomaly control</th>
+                <td>
+                  Centralised structured logging surrounds API traffic.&nbsp;A future mutate executor will stamp
+                  operator references + validation snapshots per governance commitments above.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Incident response contact</th>
+                <td>
+                  Operational security escalation path documented at
+                  <a href="mailto:contact@stemlab.site">contact@stemlab.site</a>.
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="explicit-non-use">What we explicitly do <em>not</em> claim or offer</h2>
           <ul>
             <li>
-              <strong>Reporting:</strong> server-side ingestion via Google Ads API read paths
-              (e.g., <code>searchStream</code> / GAQL-style reporting) into our Postgres-backed
-              analytics store.
+              <strong>No</strong> unrestricted Google Ads automation marketplace for unrelated
+              advertisers.
             </li>
             <li>
-              <strong>Campaign optimisation (planned, governed):</strong> limited mutate operations
-              for our own campaigns—budget updates and status changes—with approval workflows,
-              audit logging, and validation where applicable. Broader edits only under the same
-              governance model.
+              <strong>No</strong> resale or licensing of Google Ads API quotas as standalone commercial merchandise.
             </li>
             <li>
-              <strong>Campaign creation (planned):</strong> narrow create flows for
-              <strong>App campaigns</strong> and <strong>Performance Max</strong> aligned with our UA
-              playbooks, bounded volume, and audit trails—not unrestricted multi-channel campaign
-              builders for unrelated advertisers.
+              <strong>No</strong> client-directed browser calls to Ads API endpoints with developer tokens.
             </li>
           </ul>
 
-          <h2>Publishing & privacy</h2>
+          <h2 id="dashboard-mock-description">Dashboard UI outlines (reference mock descriptions)</h2>
+          <p class="muted">
+            Google allows mock-ups <em>or</em> textual descriptions — the blocks below summarise the principal UI surfaces reviewers should expect behind authentication. Operational screenshots labelled for review can additionally be emailed on request to
+            <a href="mailto:contact@stemlab.site">contact@stemlab.site</a>.
+          </p>
+
+          <figure class="reviewer-wireframe" aria-label="Textual outline of KPI summary strip">
+            <h3>1 · KPI summary strip (profit / ROAS focus)</h3>
+            <p class="mock-surface" role="img" aria-label="ASCII-style layout outline">
+[+------------------------------------------------------------------+
+ | StemLabs Dashboard · Profit blend                                   |
+ +-------------------------------------------------------------------+
+ | Cost (period) │ Revenue │ Profit │ ROAS ··· [date range picker] [CSV]
+ +-------------------------------------------------------------------+
+ | Sparkline placeholders / delta vs prior strip (internal only)       |
+ +------------------------------------------------------------------+]
+            </p>
+          </figure>
+
+          <figure class="reviewer-wireframe" aria-label="Textual outline of segmented breakdown table">
+            <h3>2 · Segment breakdown table (example: country × metrics)</h3>
+            <p class="mock-surface" role="img" aria-label="ASCII-style table outline">
+[+------------------------------------------------------------------+
+ | Filters: Country | App | Campaign | Version | …                    |
+ +-------------------------------------------------------------------+
+ | Country │ Spend │ Installs │ Impressions │ eCPM / ARPU blend …      |
+ | … rows sorted by profitability drivers …                            |
+ +------------------------------------------------------------------+]
+            </p>
+          </figure>
+
+          <figure class="reviewer-wireframe" aria-label="Textual outline of planned mutation governance">
+            <h3>3 · Planned mutation governance lane (future)</h3>
+            <p class="mock-surface" role="img" aria-label="ASCII-style approval queue outline">
+[+------------------------------------------------------------------+
+ | Mutation queue · status PENDING_APPROVED_REJECTED · actor · notes   |
+ | Change set: CID · campaign · field diff · validate-only transcript  |
+ +------------------------------------------------------------------+]
+            </p>
+          </figure>
+
+          <h2>Publishing &amp; privacy</h2>
           <p>
-            Public privacy notice for stemlabs.site:
-            <a href="./privacy-policy.html">StemLabs Privacy Policy</a>.
-            Dashboard-hosted policy (sign-in walled app surface):
+            Public privacy notice on this marketing domain:
+            <a href="./privacy-policy.html">StemLabs Privacy Policy</a>. Policy governing the walled
+            dashboard product:
             <a href="https://dashboard.stemlabs.site/privacy">https://dashboard.stemlabs.site/privacy</a>.
           </p>
 
+          <h2 id="references">Reviewer references</h2>
+          <ul>
+            <li>
+              <a
+                href="https://developers.google.com/google-ads/api/docs/api-policy/terms-and-conditions"
+                rel="noopener noreferrer"
+                >Google Ads API Terms & Conditions</a>
+            </li>
+            <li>
+              <a
+                href="https://developers.google.com/google-ads/api/docs/api-policy/access-levels"
+                rel="noopener noreferrer"
+                >Access levels & permissible use</a>
+            </li>
+            <li>
+              <a href="https://developers.google.com/google-ads/api/docs/query/overview" rel="noopener noreferrer"
+                >Google Ads Query Language (GAQL) overview</a>
+            </li>
+            <li>
+              <a href="https://developers.google.com/google-ads/api/docs/oauth/overview" rel="noopener noreferrer"
+                >OAuth overview (scopes configured per doc)</a>
+            </li>
+          </ul>
+
           <h2>Contact</h2>
           <p>
-            API / compliance enquiries:
-            <a href="mailto:contact@stemlabs.site">contact@stemlabs.site</a>.
+            API Center follow-ups, annex screenshots, or clarifications:<br /><a href="mailto:contact@stemlab.site"
+              >contact@stemlab.site</a>
           </p>
         </article>
       </div>
@@ -101,7 +542,7 @@
 
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <span>© <span id="year"></span> StemLabs · Binary Bridge Labs · All rights reserved.</span>
+        <span>© <span id="year"></span> StemLabs. All rights reserved.</span>
         <div class="footer-links">
           <a href="./google-ads-api.html">Google Ads API</a>
           <a href="./privacy-policy.html">Privacy</a>
@@ -111,5 +552,29 @@
     </footer>
 
     <script src="./app.js" defer></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        securityLevel: "strict",
+        themeVariables: {
+          darkMode: true,
+          background: "#050a14",
+          primaryColor: "#0a1628",
+          primaryTextColor: "#e8f0fc",
+          primaryBorderColor: "rgba(56,189,248,0.35)",
+          lineColor: "#38bdf8",
+          secondaryColor: "#0a1628",
+          tertiaryColor: "#050a14",
+          mainBkg: "#0a1628",
+          secondaryBorderColor: "rgba(56,189,248,0.2)",
+          clusterBkg: "#050a14",
+          titleColor: "#e8f0fc",
+          edgeLabelBackground: "#0a1628",
+        },
+      });
+      await mermaid.run({ querySelector: ".mermaid" });
+    </script>
   </body>
 </html>
